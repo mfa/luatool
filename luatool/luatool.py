@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #
 # ESP8266 luatool
 # Author e-mail: 4ref0nt@gmail.com
@@ -23,7 +23,7 @@ from time import sleep
 import argparse
 from os.path import basename
 
-version="0.6.2"
+version="0.6.3"
 
 def writeln(data, check = 1):
     if s.inWaiting() > 0:
@@ -42,6 +42,7 @@ def writeln(data, check = 1):
                raise Exception('No proper answer from MCU')
            if char == chr(13) or char == chr(10) : # LF or CR
               if line != '':
+                 line = line.strip()
                  if line+'\r' == data :
                     sys.stdout.write(" -> ok")
                  else :
